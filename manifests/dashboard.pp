@@ -1,9 +1,9 @@
 class pse_dashboard_module::dashboard{
 
 
-file {
-  ensure => directory
-  path => ~/dash
+file { '~/dash':
+    ensure => 'directory',
+
 }
 
 vcsrepo {~/dash/smashing_dash_pse
