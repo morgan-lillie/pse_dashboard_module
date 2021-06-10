@@ -2,12 +2,11 @@
 class pse_dashboard_module::dashboard{
 
   include rbenv
+  include nodejs
+
   rbenv::plugin { 'rbenv/ruby-build': }
   rbenv::build { '3.0.1':
     global => true,
-  }
-  rbenv::gem { 'bundler':
-    ruby_version => '3.0.1',
   }
 
   file { '/home/centos/dash':
