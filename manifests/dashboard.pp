@@ -1,7 +1,7 @@
 class pse_dashboard_module::dashboard{
 
 
-file { '~/dash':
+file { '/home/centos/dash':
     ensure => 'directory',
 
 }
