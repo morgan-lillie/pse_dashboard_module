@@ -6,7 +6,9 @@ class pse_dashboard_module::dashboard{
   rbenv::build { '3.0.1':
     global => true,
   }
-
+  rbenv::gem { 'bundler':
+    ruby_version => '3.0.1',
+  }
 
   file { '/home/centos/dash':
     ensure  => 'directory',
