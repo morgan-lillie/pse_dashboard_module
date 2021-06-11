@@ -35,17 +35,17 @@ class pse_dashboard_module::dashboard{
 
   file { 'psesmashdash.service':
     path    => '/etc/systemd/system/psesmashdash.service',
-    content => '[Unit]
+    content => "[Unit]
 Description=runs the pse dashboard
 
 [Service]
 User=root
-WorkingDirectory='$install_location'
+WorkingDirectory=${install_location}
 ExecStart=/usr/local/rbenv/shims/bundle exec smashing start
 Restart=always
 
 [Install]
-WantedBy=multi-user.target',
+WantedBy=multi-user.target",
 
   }
 
