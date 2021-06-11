@@ -33,7 +33,15 @@ class pse_dashboard_module::dashboard{
 
   file { 'psesmashdash':
     content => '[Unit]
-    Description=<description about this service>\n\n[Service]\nUser=<user e.g. root>\nWorkingDirectory=<directory_of_script e.g. /root>\nExecStart=<script which needs to be executed>\nRestart=always\n\n[Install]\nWantedBy=multi-user.target',
+Description=<description about this service>
+
+Service]
+User=<user e.g. root>
+WorkingDirectory=<directory_of_script e.g. /root>
+ExecStart=<script which needs to be executed>
+Restart=always
+
+[Install]\nWantedBy=multi-user.target',
     path    => '/home/psesmashdashtest',
 
   }
