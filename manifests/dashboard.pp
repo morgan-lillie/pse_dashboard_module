@@ -1,10 +1,10 @@
 #
-class pse_dashboard_module::dashboard{
+class pse_dashboard_module::dashboard(
+  String $install_location = '/home/dash/smashing_dash_pse'
+){
 
   include rbenv
   include nodejs
-
-  $install_location = '/home/dash/smashing_dash_pse'
 
   rbenv::plugin { 'rbenv/ruby-build': }
   rbenv::build { '3.0.1':
