@@ -52,5 +52,9 @@ WantedBy=multi-user.target',
     command   => '/bin/sudo systemctl daemon-reload',
   }
 
+  service { 'psesmashdash':
+    ensure => 'running'
+  }
+
 }
 
