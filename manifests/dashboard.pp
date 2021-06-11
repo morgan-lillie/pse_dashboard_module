@@ -6,7 +6,8 @@ class pse_dashboard_module::dashboard(
   include rbenv
   include nodejs
 
-  rbenv::plugin { 'rbenv/ruby-build': }
+  rbenv::plugin { 'rbenv/ruby-build':
+  }
   rbenv::build { '3.0.1':
     global => true,
   }
@@ -25,6 +26,7 @@ class pse_dashboard_module::dashboard(
     command   => '/usr/local/rbenv/shims/bundle install',
     subscribe =>  Vcsrepo[$install_location],
     cwd       => $install_location,
+    require   => Rbenv['rbenv/ruby-build'],
   }
 
   # service { 'sshd':
@@ -56,7 +58,6 @@ WantedBy=multi-user.target",
 
   service { 'psesmashdash':
     ensure  => 'running',
-    require => Exec['install_bundler_gems'],
   }
 
 }
