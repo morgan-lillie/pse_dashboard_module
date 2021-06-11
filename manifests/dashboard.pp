@@ -55,7 +55,8 @@ WantedBy=multi-user.target",
   }
 
   service { 'psesmashdash':
-    ensure => 'running'
+    ensure  => 'running',
+    require => Exec['install_bundler_gems'],
   }
 
 }
