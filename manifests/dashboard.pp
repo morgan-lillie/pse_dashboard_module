@@ -32,17 +32,18 @@ class pse_dashboard_module::dashboard{
   # }
 
   file { 'psesmashdash':
+    path    => '/etc/systemd/system',
     content => '[Unit]
-Description=<description about this service>
+Description=runs the dashboard
 
-Service]
-User=<user e.g. root>
-WorkingDirectory=<directory_of_script e.g. /root>
-ExecStart=<script which needs to be executed>
+[Service]
+User=centos
+WorkingDirectory=/home/dash/psesmashingdash
+ExecStart=bundle exec smashing start
 Restart=always
 
-[Install]\nWantedBy=multi-user.target',
-    path    => '/home/psesmashdashtest',
+[Install]
+WantedBy=multi-user.target',
 
   }
 
