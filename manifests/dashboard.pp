@@ -9,11 +9,11 @@ class pse_dashboard_module::dashboard{
     global => true,
   }
 
-  file { '/home/centos/dash':
+  file { '/home/dash':
     ensure  => 'directory',
   }
 
-  vcsrepo {'/home/centos/dash/smashing_dash_pse':
+  vcsrepo {'/home/dash/smashing_dash_pse':
     ensure   => present,
     provider => git,
     source   => 'https://github.com/chrislorro/smashing_dash_pse.git',
@@ -21,8 +21,8 @@ class pse_dashboard_module::dashboard{
 
   exec { 'install_bundler_gems':
     command   => '/usr/local/rbenv/shims/bundle install',
-    subscribe =>  Vcsrepo['/home/centos/dash/smashing_dash_pse'],
-    cwd       => '/home/centos/dash/smashing_dash_pse',
+    subscribe =>  Vcsrepo['/home/dash/smashing_dash_pse'],
+    cwd       => '/home/dash/smashing_dash_pse',
   }
 
   # service { 'sshd':
@@ -38,7 +38,7 @@ Description=runs the pse dashboard
 
 [Service]
 User=root
-WorkingDirectory=/home/centos/dash/smashing_dash_pse
+WorkingDirectory=/home/dash/smashing_dash_pse
 ExecStart=/usr/local/rbenv/shims/bundle exec smashing start
 Restart=always
 
