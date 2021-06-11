@@ -4,6 +4,8 @@ class pse_dashboard_module::dashboard{
   include rbenv
   include nodejs
 
+  $install_location = '/home/dash/smashing_dash_pse'
+
   rbenv::plugin { 'rbenv/ruby-build': }
   rbenv::build { '3.0.1':
     global => true,
@@ -13,7 +15,7 @@ class pse_dashboard_module::dashboard{
     ensure  => 'directory',
   }
 
-  vcsrepo {'/home/dash/smashing_dash_pse':
+  vcsrepo {$install_location:
     ensure   => present,
     provider => git,
     source   => 'https://github.com/chrislorro/smashing_dash_pse.git',
@@ -21,8 +23,8 @@ class pse_dashboard_module::dashboard{
 
   exec { 'install_bundler_gems':
     command   => '/usr/local/rbenv/shims/bundle install',
-    subscribe =>  Vcsrepo['/home/dash/smashing_dash_pse'],
-    cwd       => '/home/dash/smashing_dash_pse',
+    subscribe =>  Vcsrepo[$install_location],
+    cwd       => $install_location,
   }
 
   # service { 'sshd':
@@ -38,7 +40,7 @@ Description=runs the pse dashboard
 
 [Service]
 User=root
-WorkingDirectory=/home/dash/smashing_dash_pse
+WorkingDirectory='$install_location'
 ExecStart=/usr/local/rbenv/shims/bundle exec smashing start
 Restart=always
 
