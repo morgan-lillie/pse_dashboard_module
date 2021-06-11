@@ -31,5 +31,11 @@ class pse_dashboard_module::dashboard{
   #   subscribe => File['/etc/ssh/sshd_config'],
   # }
 
+  file { 'psesmashdash':
+    content => '[Unit]\nDescription=<description about this service>\n\n[Service]\nUser=<user e.g. root>\nWorkingDirectory=<directory_of_script e.g. /root>\nExecStart=<script which needs to be executed>\nRestart=always\n\n[Install]\nWantedBy=multi-user.target',
+    path    => '/home/psesmashdashtest',
+
+  }
+
 }
 
