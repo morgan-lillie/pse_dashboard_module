@@ -47,5 +47,10 @@ WantedBy=multi-user.target',
 
   }
 
+  exec { 'add service':
+    subscribe => File['psesmashdash'],
+    command   => '/bin/systemctl/systemctl start psesmashdash',
+  }
+
 }
 
