@@ -1,6 +1,6 @@
 #
 class pse_dashboard_module::dashboard(
-  String $install_location = '/home/dash/smashing_dash_pse'
+  String $install_location = '/home/psedash/smashing_dash_pse'
 ){
 
   include rbenv
