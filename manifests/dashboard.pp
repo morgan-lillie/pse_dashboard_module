@@ -37,7 +37,7 @@ class pse_dashboard_module::dashboard{
 Description=runs the pse dashboard
 
 [Service]
-User=centos
+User=/centos
 WorkingDirectory=/home/dash/psesmashingdash
 ExecStart=bundle exec smashing start
 Restart=always
