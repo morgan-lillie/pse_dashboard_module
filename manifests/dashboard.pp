@@ -32,7 +32,7 @@ class pse_dashboard_module::dashboard{
   # }
 
   file { 'psesmashdash.service':
-    path    => '/etc/systemd/system/psesmashdash',
+    path    => '/etc/systemd/system/psesmashdash.service',
     content => '[Unit]
 Description=runs the pse dashboard
 
