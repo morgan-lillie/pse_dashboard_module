@@ -34,7 +34,7 @@ class pse_dashboard_module::dashboard{
   file { 'psesmashdash':
     path    => '/etc/systemd/system/psesmashdash',
     content => '[Unit]
-Description=runs the dashboard
+Description=runs the pse dashboard
 
 [Service]
 User=centos
@@ -49,7 +49,7 @@ WantedBy=multi-user.target',
 
   exec { 'add service':
     subscribe => File['psesmashdash'],
-    command   => '/bin/systemctl start psesmashdash',
+    command   => '/bin/systemctl demon-reload',
   }
 
 }
