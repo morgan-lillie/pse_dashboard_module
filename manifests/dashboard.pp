@@ -20,8 +20,7 @@ class pse_dashboard_module::dashboard{
   }
 
   exec { 'install_bundler_gems':
-    path      => '/usr/local/rbenv/shims',
-    command   => 'bundle install',
+    command   => '/usr/local/rbenv/shims/bundle install',
     subscribe =>  Vcsrepo['/home/centos/dash/smashing_dash_pse'],
     cwd       => '/home/centos/dash/smashing_dash_pse',
   }
