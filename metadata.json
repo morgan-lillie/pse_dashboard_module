@@ -2,9 +2,9 @@
   "name": "morganlillie-pse_dashboard_module",
   "version": "0.1.0",
   "author": "Morgan G.J. Lillie",
-  "summary": "",
+  "summary": "Installs PSE Dashbpard",
   "license": "Apache-2.0",
-  "source": "",
+  "source": "Here",
   "dependencies": [
       {
         "name": "jdowning/rbenv",
