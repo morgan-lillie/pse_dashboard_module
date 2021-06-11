@@ -31,15 +31,15 @@ class pse_dashboard_module::dashboard{
   #   subscribe => File['/etc/ssh/sshd_config'],
   # }
 
-  file { 'psesmashdash':
+  file { 'psesmashdash.service':
     path    => '/etc/systemd/system/psesmashdash',
     content => '[Unit]
 Description=runs the pse dashboard
 
 [Service]
-User=/centos
-WorkingDirectory=/home/dash/psesmashingdash
-ExecStart=bundle exec smashing start
+User=root
+WorkingDirectory=/home/centos/dash/smashing_dash_pse
+ExecStart=/usr/local/rbenv/shims/bundle exec smashing start
 Restart=always
 
 [Install]
@@ -48,7 +48,7 @@ WantedBy=multi-user.target',
   }
 
   exec { 'add service':
-    subscribe => File['psesmashdash'],
+    subscribe => File['psesmashdash.service'],
     command   => '/bin/sudo systemctl daemon-reload',
   }
 
